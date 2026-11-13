@@ -1,6 +1,6 @@
 # Catatan Keuangan Pribadi
 
-Aplikasi web pencatatan keuangan pribadi: pemasukan, pengeluaran, anggaran bulanan, laporan, dan ekspor CSV.
+Aplikasi web pencatatan keuangan pribadi: pemasukan, pengeluaran, anggaran bulanan, laporan, dan ekspor CSV. Seluruh antarmuka berbahasa Indonesia, nominal Rupiah bulat, dan tanggal ditampilkan sebagai `13 November 2026`.
 
 ## Stack
 
@@ -17,8 +17,14 @@ cp .env.example .env.local   # isi dua variabel dari project Supabase
 npm run dev                  # http://localhost:3000
 ```
 
-Skema database ada di `supabase/migrations/` — lihat `supabase/README.md`
-untuk urutan menjalankannya di Supabase SQL Editor.
+| Variabel | Contoh |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://abcdefgh.supabase.co` (tanpa `/rest/v1`) |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | publishable key `sb_publishable_...` atau anon key lama |
+
+Hanya dua nilai publik itu yang dipakai. Jangan memakai service role/secret key.
+
+Skema database ada di `supabase/migrations/` — lihat `supabase/README.md` untuk urutan menjalankannya di Supabase SQL Editor. Panduan deploy lengkap ada di [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
 ## Perintah
 
@@ -26,8 +32,45 @@ untuk urutan menjalankannya di Supabase SQL Editor.
 | --- | --- |
 | `npm run dev` | Server pengembangan |
 | `npm run build` | Build produksi |
+| `npm run start` | Menjalankan hasil build |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | TypeScript tanpa emit |
+
+## Struktur folder
+
+```text
+app/
+├── (auth)/                 # login, register
+├── (app)/                  # dashboard, transaksi, anggaran, laporan, pengaturan
+└── api/export/             # ekspor CSV
+components/
+├── ui/                     # shadcn/ui
+├── layout/                 # sidebar, navigasi mobile, tema, menu pengguna
+├── dashboard/              # kartu statistik, grafik, transaksi terakhir
+├── transactions/           # filter, daftar, form, hapus
+├── categories/             # pengelolaan kategori
+├── budgets/                # daftar anggaran, form, progress
+├── reports/                # tab, ringkasan, grafik, ekspor
+└── shared/                 # empty state, dialog konfirmasi, input nominal, filter periode
+lib/
+├── supabase/               # client server/browser, proxy sesi
+├── actions/                # Server Action (auth, transaksi, kategori, anggaran, profil)
+├── db/                     # query baca (transaksi, kategori, anggaran, laporan, dashboard)
+├── validation/             # skema Zod
+└── auth.ts, period.ts, format.ts, constants.ts, types.ts, csv.ts
+supabase/migrations/        # 0001_schema … 0004_functions
+proxy.ts                    # refresh sesi + proteksi route
+vercel.json                 # region sin1
+```
+
+## Alur utama
+
+- Pengguna baru otomatis mendapat profil dan 15 kategori default lewat trigger.
+- Semua mutasi memakai Server Action dengan validasi Zod dan `requireUser()`.
+- Semua query baca berjalan di Server Component; RLS membatasi data per pengguna.
+- Filter, urutan, dan pagination disimpan di URL agar bisa dibagikan/di-refresh.
+- Ekspor CSV mengikuti tab laporan aktif, memakai UTF-8 BOM dan nama file
+  `transaksi-YYYY-MM-DD.csv`.
 
 ## Dokumen
 
@@ -37,3 +80,9 @@ untuk urutan menjalankannya di Supabase SQL Editor.
 | `ARCHITECTURE.md` | Stack, alur data, keamanan, konfigurasi |
 | `DATABASE_SCHEMA.md` | DDL, RLS, trigger, RPC |
 | `TASKS.md` | Rencana kerja per tahap |
+| `DEPLOYMENT.md` | Langkah Supabase, Vercel, backup, pause, reset password |
+
+## Backup
+
+Free Tier tidak punya backup otomatis. Unduh CSV bulanan dari `/laporan` dan
+lakukan `pg_dump` berkala. Perintah lengkap ada di `DEPLOYMENT.md` bagian 6.

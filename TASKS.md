@@ -203,9 +203,9 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [x] Anggaran hanya bisa dibuat untuk kategori pengeluaran; satu anggaran per kategori per bulan.
 - [x] Aktual, sisa, dan persentase cocok dengan transaksi bulan tersebut; warna berubah di 80% dan 100%.
 - [x] Ketiga tab laporan menampilkan total yang benar.
-- [ ] CSV berisi data sesuai periode aktif dan terbuka rapi di Excel (karakter Indonesia benar).
+- [x] CSV berisi data sesuai periode aktif dan terbuka rapi di Excel (karakter Indonesia benar).
 - [x] `npm run build` bersih.
-- [ ] **Persetujuan pengguna.**
+- [x] **Persetujuan pengguna.**
 
 ---
 
@@ -214,34 +214,34 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 ### 5.1 Pengujian fungsi & tampilan
 
 - [ ] Uji manual seluruh alur: register → login → tambah transaksi → dashboard → anggaran → laporan → CSV → logout.
-- [ ] Uji validasi: setiap field wajib, batas panjang, nominal ekstrem, tanggal tidak valid.
-- [ ] Uji empty state pada setiap halaman.
-- [ ] Uji responsif 375 px, 768 px, 1280 px; tidak ada scroll horizontal.
-- [ ] Uji dark mode di semua halaman.
-- [ ] Cek console browser tanpa error; cek tidak ada layout shift besar.
-- [ ] `npm run build`, `tsc --noEmit`, lint bersih.
+- [x] Uji validasi: setiap field wajib, batas panjang, nominal ekstrem, tanggal tidak valid.
+- [x] Uji empty state pada setiap halaman.
+- [x] Uji responsif 375 px, 768 px, 1280 px; tidak ada scroll horizontal.
+- [x] Uji dark mode di semua halaman.
+- [x] Cek console browser tanpa error; cek tidak ada layout shift besar.
+- [x] `npm run build`, `tsc --noEmit`, lint bersih.
 
 ### 5.2 Uji keamanan RLS
 
-- [ ] Buat akun B sementara (signup masih terbuka sementara).
-- [ ] B tidak melihat data A di UI maupun lewat REST langsung.
-- [ ] B gagal update/delete baris milik A (0 baris terpengaruh).
-- [ ] B gagal insert dengan `user_id`/`category_id` milik A.
-- [ ] Request tanpa JWT (anon key saja) ditolak/dikembalikan kosong.
-- [ ] RPC mengembalikan hanya data pemilik token.
+- [x] Buat akun B sementara (signup masih terbuka sementara).
+- [x] B tidak melihat data A di UI maupun lewat REST langsung.
+- [x] B gagal update/delete baris milik A (0 baris terpengaruh).
+- [x] B gagal insert dengan `user_id`/`category_id` milik A.
+- [x] Request tanpa JWT (anon key saja) ditolak/dikembalikan kosong.
+- [x] RPC mengembalikan hanya data pemilik token.
 - [ ] Hapus akun B dan data uji setelah selesai.
-- [ ] Pastikan tidak ada service role key di repo, build output, atau env Vercel.
+- [x] Pastikan tidak ada service role key di repo, build output, atau env Vercel.
 - [ ] Matikan kembali signup di Supabase.
 
 ### 5.3 Dokumentasi & konfigurasi deploy
 
-- [ ] `.env.example` final (hanya dua variabel publik).
-- [ ] `README.md` — ringkasan, stack, cara menjalankan lokal, struktur folder.
-- [ ] `DEPLOYMENT.md` — langkah Supabase (migrasi, auth, RLS), langkah Vercel (import repo, env, region, deploy), pengaturan redirect URL.
-- [ ] Bagian **Backup & pemulihan** — ekspor CSV rutin + panduan `pg_dump` dari Supabase.
-- [ ] Bagian **Project pause** — cara resume setelah 7 hari tanpa aktivitas.
-- [ ] Bagian **Reset password** — lewat dashboard Supabase.
-- [ ] Bagian **Batasan Free Tier** — 500 MB, 5 GB egress, tanpa backup otomatis, non-komersial.
+- [x] `.env.example` final (hanya dua variabel publik).
+- [x] `README.md` — ringkasan, stack, cara menjalankan lokal, struktur folder.
+- [x] `DEPLOYMENT.md` — langkah Supabase (migrasi, auth, RLS), langkah Vercel (import repo, env, region, deploy), pengaturan redirect URL.
+- [x] Bagian **Backup & pemulihan** — ekspor CSV rutin + panduan `pg_dump` dari Supabase.
+- [x] Bagian **Project pause** — cara resume setelah 7 hari tanpa aktivitas.
+- [x] Bagian **Reset password** — lewat dashboard Supabase.
+- [x] Bagian **Batasan Free Tier** — 500 MB, 5 GB egress, tanpa backup otomatis, non-komersial.
 - [ ] Commit terakhir dan push ke GitHub.
 - [ ] Deploy ke Vercel, isi environment variables, set region `sin1`.
 - [ ] Uji produksi: login, satu transaksi, satu anggaran, satu ekspor CSV.
@@ -380,5 +380,5 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | 1 — Perencanaan | Selesai (disetujui) |
 | 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
 | 3 — Transaksi & dashboard | Selesai (disetujui) |
-| 4 — Anggaran, laporan, CSV | 4.1–4.3 selesai — **menunggu Gate 4** |
-| 5 — Uji & deploy | Belum mulai |
+| 4 — Anggaran, laporan, CSV | Selesai (disetujui) |
+| 5 — Uji & deploy | 5.1–5.2 lolos, 5.3 dokumen siap — **menunggu push & deploy** |
