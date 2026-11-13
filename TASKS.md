@@ -242,7 +242,7 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [x] Bagian **Project pause** — cara resume setelah 7 hari tanpa aktivitas.
 - [x] Bagian **Reset password** — lewat dashboard Supabase.
 - [x] Bagian **Batasan Free Tier** — 500 MB, 5 GB egress, tanpa backup otomatis, non-komersial.
-- [ ] Commit terakhir dan push ke GitHub.
+- [x] Commit terakhir dan push ke GitHub.
 - [ ] Deploy ke Vercel, isi environment variables, set region `sin1`.
 - [ ] Uji produksi: login, satu transaksi, satu anggaran, satu ekspor CSV.
 - [ ] Setelah verifikasi, matikan signup Supabase dan hapus akun uji.
@@ -381,4 +381,4 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
 | 3 — Transaksi & dashboard | Selesai (disetujui) |
 | 4 — Anggaran, laporan, CSV | Selesai (disetujui) |
-| 5 — Uji & deploy | 5.1–5.2 lolos, 5.3 dokumen siap — **menunggu push & deploy** |
+| 5 — Uji & deploy | 5.1–5.2 lolos, repo sudah di GitHub — **menunggu deploy Vercel** |
