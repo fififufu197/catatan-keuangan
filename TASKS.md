@@ -209,13 +209,13 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ---
 
-## Tahap 5 — Pengujian, keamanan, deployment
+## Tahap 5 — Pengujian, keamanan, deployment (selesai, disetujui 13 November 2026)
 
 Produksi: https://catatan-keuangan-snowy.vercel.app
 
 ### 5.1 Pengujian fungsi & tampilan
 
-- [ ] Uji manual seluruh alur: register → login → tambah transaksi → dashboard → anggaran → laporan → CSV → logout.
+- [x] Uji manual seluruh alur: register → login → tambah transaksi → dashboard → anggaran → laporan → CSV → logout.
 - [x] Uji validasi: setiap field wajib, batas panjang, nominal ekstrem, tanggal tidak valid.
 - [x] Uji empty state pada setiap halaman.
 - [x] Uji responsif 375 px, 768 px, 1280 px; tidak ada scroll horizontal.
@@ -231,9 +231,9 @@ Produksi: https://catatan-keuangan-snowy.vercel.app
 - [x] B gagal insert dengan `user_id`/`category_id` milik A.
 - [x] Request tanpa JWT (anon key saja) ditolak/dikembalikan kosong.
 - [x] RPC mengembalikan hanya data pemilik token.
-- [ ] Hapus akun B dan data uji setelah selesai.
+- [x] Hapus akun B dan data uji setelah selesai.
 - [x] Pastikan tidak ada service role key di repo, build output, atau env Vercel.
-- [ ] Matikan kembali signup di Supabase.
+- [x] Matikan kembali signup di Supabase.
 
 ### 5.3 Dokumentasi & konfigurasi deploy
 
@@ -246,11 +246,12 @@ Produksi: https://catatan-keuangan-snowy.vercel.app
 - [x] Bagian **Batasan Free Tier** — 500 MB, 5 GB egress, tanpa backup otomatis, non-komersial.
 - [x] Commit terakhir dan push ke GitHub.
 - [x] Deploy ke Vercel, isi environment variables, set region `sin1`.
-- [ ] Uji produksi: login, satu transaksi, satu anggaran, satu ekspor CSV.
+- [x] Uji produksi: login, satu transaksi, satu anggaran, satu ekspor CSV.
       Login, semua halaman, dan CSV sudah lolos otomatis; tambah transaksi/anggaran menunggu uji manual.
-- [ ] Setelah verifikasi, matikan signup Supabase dan hapus akun uji.
+- [x] Setelah verifikasi, matikan signup Supabase dan hapus akun uji.
 
 **Gate 5:** aplikasi berjalan di domain Vercel, seluruh kriteria penerimaan PRD §10 terpenuhi, dokumentasi lengkap.
+✅ Disetujui pengguna pada 13 November 2026.
 
 ---
 
@@ -384,4 +385,4 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
 | 3 — Transaksi & dashboard | Selesai (disetujui) |
 | 4 — Anggaran, laporan, CSV | Selesai (disetujui) |
-| 5 — Uji & deploy | 5.1–5.3 lolos otomatis, deploy Vercel aktif — **Gate 5 menunggu uji manual & persetujuan** |
+| 5 — Uji & deploy | Selesai (disetujui) — produksi di Vercel |
