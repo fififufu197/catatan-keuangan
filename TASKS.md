@@ -253,7 +253,7 @@ Produksi: https://catatan-keuangan-snowy.vercel.app
 **Gate 5:** aplikasi berjalan di domain Vercel, seluruh kriteria penerimaan PRD §10 terpenuhi, dokumentasi lengkap.
 ✅ Disetujui pengguna pada 13 November 2026.
 
-## Tahap 6 — Penyegaran UI "Liquid"
+## Tahap 6 — Penyegaran UI "Liquid" (selesai, disetujui 13 November 2026)
 
 Referensi visual: [Liquid - Financial Website](https://dribbble.com/shots/26071979-Liquid-Financial-Website)
 (Barly Design / Uxerflow). Palet: `#F8F6F2`, `#040405`, `#F1370F`,
@@ -277,9 +277,10 @@ Referensi visual: [Liquid - Financial Website](https://dribbble.com/shots/260719
 - [x] Mode gelap di semua halaman.
 - [x] Console/network browser bersih.
 - [x] `tsc --noEmit`, lint, dan build bersih.
-- [ ] **Persetujuan pengguna.**
+- [x] **Persetujuan pengguna.**
 
 **Gate 6:** tampilan baru konsisten di semua halaman, tidak ada regresi fungsi, dan pengguna menyetujui arah visual.
+✅ Disetujui pengguna pada 13 November 2026.
 
 ---
 
@@ -414,4 +415,4 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | 3 — Transaksi & dashboard | Selesai (disetujui) |
 | 4 — Anggaran, laporan, CSV | Selesai (disetujui) |
 | 5 — Uji & deploy | Selesai (disetujui) — produksi di Vercel |
-| 6 — Penyegaran UI "Liquid" | Selesai dikerjakan — **menunggu Gate 6** |
+| 6 — Penyegaran UI "Liquid" | Selesai (disetujui) |

@@ -9,6 +9,15 @@ Aplikasi web pencatatan keuangan pribadi: pemasukan, pengeluaran, anggaran bulan
 - Supabase (Postgres + Auth), RLS aktif
 - Deploy: Vercel Hobby, region `sin1`
 
+## Tampilan
+
+Gaya visual "Liquid": latar krem `#F8F6F2`, teks `#0B0B0D`, aksen oranye
+`#F1370F` dan indigo `#2B23C3`, kartu kaca dengan sudut besar, serta latar
+gumpalan warna yang bergerak halus. Token warna, radius, dan animasi ada di
+`app/globals.css`; kartu saldo utama di
+`components/dashboard/balance-overview.tsx`. Animasi dimatikan otomatis saat
+`prefers-reduced-motion` atau di layar ponsel.
+
 ## Menjalankan lokal
 
 ```bash
@@ -46,7 +55,7 @@ app/
 components/
 ├── ui/                     # shadcn/ui
 ├── layout/                 # sidebar, navigasi mobile, tema, menu pengguna
-├── dashboard/              # kartu statistik, grafik, transaksi terakhir
+├── dashboard/              # kartu saldo, grafik, transaksi terakhir
 ├── transactions/           # filter, daftar, form, hapus
 ├── categories/             # pengelolaan kategori
 ├── budgets/                # daftar anggaran, form, progress
