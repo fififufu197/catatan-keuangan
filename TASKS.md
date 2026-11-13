@@ -31,7 +31,7 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [x] `TASKS.md` — dokumen ini.
 - [x] Struktur folder ditentukan (lihat bagian Struktur Folder).
 - [x] Risiko dan kebutuhan konfigurasi Vercel/Supabase diidentifikasi.
-- [ ] **Persetujuan pengguna atas Tahap 1.**
+- [x] **Persetujuan pengguna atas Tahap 1.**
 
 **Gate 1:** pengguna menyetujui PRD, arsitektur, skema, dan rencana kerja. Tidak ada kode aplikasi ditulis sebelum gate ini lulus.
 
@@ -51,15 +51,16 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ### 2.2 Scaffold Next.js
 
-- [ ] `npx create-next-app@16.4.6` dengan TypeScript, Tailwind, App Router, `src/` tidak dipakai.
-- [ ] Pasang dependency: `@supabase/ssr`, `@supabase/supabase-js`, `zod`, `recharts`, `next-themes`, `lucide-react`, `sonner`.
-- [ ] Inisialisasi shadcn/ui dan tambahkan komponen dasar: button, input, label, card, dialog, select, dropdown-menu, table, tabs, badge, progress, sheet, skeleton, sonner, form-error.
-- [ ] Pin versi di `package.json`, commit lockfile.
-- [ ] `.gitignore` memuat `.env*.local`, `.next`, `node_modules`.
-- [ ] `.env.example` berisi dua nama variabel tanpa nilai.
-- [ ] `next.config.ts`: header keamanan (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
-- [ ] `vercel.json`: `{ "regions": ["sin1"] }`.
-- [ ] `git init`, commit awal, push ke repo GitHub baru.
+- [x] `npx create-next-app@16.4.6` dengan TypeScript, Tailwind, App Router, `src/` tidak dipakai.
+- [x] Pasang dependency: `@supabase/ssr`, `@supabase/supabase-js`, `zod`, `recharts`, `next-themes`, `lucide-react`, `sonner`.
+- [x] Inisialisasi shadcn/ui dan tambahkan komponen dasar: button, input, label, card, dialog, select, dropdown-menu, table, tabs, badge, progress, sheet, skeleton, sonner.
+- [x] Pin versi di `package.json`, commit lockfile.
+- [x] `.gitignore` memuat `.env*.local`, `.next`, `node_modules`.
+- [x] `.env.example` berisi dua nama variabel tanpa nilai.
+- [x] `next.config.ts`: header keamanan (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
+- [x] `vercel.json`: `{ "regions": ["sin1"] }`.
+- [x] `git init`, commit awal.
+- [ ] Push ke repo GitHub baru.
 
 ### 2.3 Supabase client & sesi
 
@@ -94,7 +95,7 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [ ] `app/globals.css` — token warna Tailwind v4 (hijau income, merah expense, netral).
 - [ ] `app/(app)/layout.tsx` — `requireUser()`, sidebar desktop, sheet + bottom nav mobile.
 - [ ] `components/layout/sidebar.tsx`, `mobile-nav.tsx`, `theme-toggle.tsx`, `page-header.tsx`, `user-menu.tsx`.
-- [ ] `components/shared/empty-state.tsx`, `confirm-dialog.tsx`, `money-input.tsx`, `period-filter.tsx`.
+- [ ] `components/shared/empty-state.tsx`, `confirm-dialog.tsx`, `money-input.tsx`, `period-filter.tsx`, `form-error.tsx`.
 - [ ] Halaman placeholder `/dashboard`, `/transaksi`, `/anggaran`, `/laporan`, `/pengaturan` yang bisa dibuka tanpa error.
 - [ ] Dark mode berfungsi dan tersimpan; default terang.
 
@@ -376,8 +377,8 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 
 | Tahap | Status |
 | --- | --- |
-| 1 — Perencanaan | Selesai, **menunggu persetujuan** |
-| 2 — Fondasi | Belum mulai |
+| 1 — Perencanaan | Selesai (disetujui) |
+| 2 — Fondasi | Berjalan — 2.1 SQL ditulis, 2.2 scaffold selesai |
 | 3 — Transaksi & dashboard | Belum mulai |
 | 4 — Anggaran, laporan, CSV | Belum mulai |
 | 5 — Uji & deploy | Belum mulai |
