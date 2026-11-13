@@ -10,6 +10,11 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,81 +57,95 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/*
+ * Palet "Liquid": krem hangat, hitam pekat, oranye menyala, dan indigo.
+ * Sumber: referensi Dribbble "Liquid - Financial Website" (Barly Design).
+ */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --income: oklch(0.52 0.14 155);
-  --income-foreground: oklch(0.985 0 0);
-  --expense: oklch(0.56 0.2 25);
-  --expense-foreground: oklch(0.985 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #f8f6f2;
+  --foreground: #0b0b0d;
+  --card: #fffdf9;
+  --card-foreground: #0b0b0d;
+  --popover: #fffdf9;
+  --popover-foreground: #0b0b0d;
+  --primary: #0b0b0d;
+  --primary-foreground: #f8f6f2;
+  --secondary: #efe8dd;
+  --secondary-foreground: #0b0b0d;
+  --muted: #f0ebe3;
+  --muted-foreground: #6b6257;
+  --accent: #ece5da;
+  --accent-foreground: #0b0b0d;
+  --destructive: #c22c0c;
+  --border: #e3dbcf;
+  --input: #ddd3c5;
+  --ring: #c2b6a9;
+  --brand: #f1370f;
+  --brand-foreground: #fff8f4;
+  --brand-soft: #fde7df;
+  --ink: #0b0b0d;
+  --cream: #f8f6f2;
+  --chart-1: #f1370f;
+  --chart-2: #2b23c3;
+  --chart-3: #c2b6a9;
+  --chart-4: #4c4960;
+  --chart-5: #0e7a4e;
+  --income: #0e7a4e;
+  --income-foreground: #f8f6f2;
+  --expense: #c22c0c;
+  --expense-foreground: #f8f6f2;
+  --radius: 1rem;
+  --sidebar: #f3eee6;
+  --sidebar-foreground: #0b0b0d;
+  --sidebar-primary: #0b0b0d;
+  --sidebar-primary-foreground: #f8f6f2;
+  --sidebar-accent: #e9e2d6;
+  --sidebar-accent-foreground: #0b0b0d;
+  --sidebar-border: #e3dbcf;
+  --sidebar-ring: #c2b6a9;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --income: oklch(0.72 0.15 155);
-  --income-foreground: oklch(0.145 0 0);
-  --expense: oklch(0.7 0.17 25);
-  --expense-foreground: oklch(0.145 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0a0a0b;
+  --foreground: #f4f0e8;
+  --card: #141416;
+  --card-foreground: #f4f0e8;
+  --popover: #17171a;
+  --popover-foreground: #f4f0e8;
+  --primary: #f4f0e8;
+  --primary-foreground: #0a0a0b;
+  --secondary: #232326;
+  --secondary-foreground: #f4f0e8;
+  --muted: #1d1d20;
+  --muted-foreground: #a49c90;
+  --accent: #26262a;
+  --accent-foreground: #f4f0e8;
+  --destructive: #ff6a45;
+  --border: #ffffff1a;
+  --input: #ffffff24;
+  --ring: #6b6257;
+  --brand: #ff5c33;
+  --brand-foreground: #1a0a05;
+  --brand-soft: #3a1409;
+  --ink: #0b0b0d;
+  --cream: #f8f6f2;
+  --chart-1: #ff5c33;
+  --chart-2: #7a72ff;
+  --chart-3: #c2b6a9;
+  --chart-4: #8d88a3;
+  --chart-5: #3ecf8e;
+  --income: #4ade9d;
+  --income-foreground: #0a0a0b;
+  --expense: #ff6a45;
+  --expense-foreground: #0a0a0b;
+  --sidebar: #101012;
+  --sidebar-foreground: #f4f0e8;
+  --sidebar-primary: #f4f0e8;
+  --sidebar-primary-foreground: #0a0a0b;
+  --sidebar-accent: #1e1e22;
+  --sidebar-accent-foreground: #f4f0e8;
+  --sidebar-border: #ffffff14;
+  --sidebar-ring: #6b6257;
 }
 
 @layer base {
@@ -138,5 +157,73 @@
   }
   html {
     @apply font-sans;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-foreground);
+  }
+}
+
+@layer components {
+  /* Latar "liquid": gumpalan warna lembut di belakang konten. */
+  .liquid-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .liquid-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(96px);
+    opacity: 0.42;
+    animation: liquid-drift 24s ease-in-out infinite;
+  }
+
+  .liquid-blob-brand {
+    background: color-mix(in srgb, var(--brand) 60%, transparent);
+  }
+
+  .liquid-blob-indigo {
+    background: color-mix(in srgb, #2b23c3 45%, transparent);
+  }
+
+  .liquid-blob-sand {
+    background: color-mix(in srgb, #c2b6a9 70%, transparent);
+  }
+
+  .dark .liquid-blob {
+    opacity: 0.26;
+  }
+
+  /* Permukaan gelap untuk kartu utama. */
+  .ink-surface {
+    background-color: var(--ink);
+    color: var(--cream);
+  }
+}
+
+@keyframes liquid-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5rem, -1.5rem, 0) scale(1.08);
+  }
+}
+
+@media (max-width: 767px) {
+  .liquid-blob {
+    animation: none;
+    opacity: 0.32;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-blob {
+    animation: none;
   }
 }

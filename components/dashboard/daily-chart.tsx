@@ -46,7 +46,7 @@ export function DailyChart({ data }: { data: DailyPoint[] }) {
               background: "var(--popover)",
               color: "var(--popover-foreground)",
               border: "1px solid var(--border)",
-              borderRadius: 8,
+              borderRadius: 12,
               fontSize: 12,
             }}
             labelFormatter={(label) => formatTanggal(String(label))}
@@ -56,20 +56,20 @@ export function DailyChart({ data }: { data: DailyPoint[] }) {
             verticalAlign="top"
             height={28}
             iconType="circle"
-            wrapperStyle={{ fontSize: 12 }}
+            wrapperStyle={{ fontSize: 12, color: "var(--muted-foreground)" }}
           />
           <Bar
             dataKey="income"
             name="Pemasukan"
             fill="var(--income)"
-            radius={[4, 4, 0, 0]}
+            radius={[6, 6, 0, 0]}
             maxBarSize={18}
           />
           <Bar
             dataKey="expense"
             name="Pengeluaran"
             fill="var(--expense)"
-            radius={[4, 4, 0, 0]}
+            radius={[6, 6, 0, 0]}
             maxBarSize={18}
           />
         </BarChart>

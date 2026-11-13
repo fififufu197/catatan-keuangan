@@ -26,13 +26,18 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-full flex-col gap-6 p-4">
+    <div className="flex h-full flex-col gap-7 p-4">
       <Link
         href="/dashboard"
         onClick={onNavigate}
-        className="px-2 text-base font-semibold tracking-tight"
+        className="flex items-center gap-2.5 rounded-xl px-2 py-1"
       >
-        {APP_NAME}
+        <span className="bg-brand text-brand-foreground flex size-8 shrink-0 items-center justify-center rounded-xl shadow-[0_6px_16px_-8px_var(--brand)]">
+          <Wallet className="size-4" aria-hidden />
+        </span>
+        <span className="text-sm leading-tight font-semibold tracking-tight">
+          {APP_NAME}
+        </span>
       </Link>
 
       <nav className="flex flex-col gap-1" aria-label="Navigasi utama">
@@ -48,10 +53,10 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               onClick={onNavigate}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
                 active
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                  : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
+                  ? "bg-foreground text-background font-medium shadow-[0_10px_24px_-18px_var(--foreground)]"
+                  : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground",
               )}
             >
               <Icon className="size-4" aria-hidden />
@@ -60,6 +65,14 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
           );
         })}
       </nav>
+
+      <div className="mt-auto rounded-2xl border border-sidebar-border/70 bg-background/50 p-3.5">
+        <p className="text-xs font-medium">Catatan aman</p>
+        <p className="text-muted-foreground mt-1 text-[11px] leading-relaxed">
+          Data hanya bisa diakses akun Anda. Unduh CSV tiap akhir bulan untuk
+          cadangan.
+        </p>
+      </div>
     </div>
   );
 }

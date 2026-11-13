@@ -28,7 +28,7 @@ export function MobileNav() {
   return (
     <nav
       aria-label="Navigasi bawah"
-      className="bg-background/95 supports-[backdrop-filter]:bg-background/80 fixed inset-x-0 bottom-0 z-30 flex border-t backdrop-blur md:hidden"
+      className="bg-background/80 supports-[backdrop-filter]:bg-background/65 fixed inset-x-0 bottom-0 z-30 flex border-t border-border/60 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
     >
       {NAV_ITEMS.map((item) => {
         const Icon = ICONS[item.href] ?? LayoutDashboard;
@@ -40,13 +40,26 @@ export function MobileNav() {
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
-            className={cn(
-              "flex flex-1 flex-col items-center gap-1 py-2 text-[11px] transition-colors",
-              active ? "text-foreground font-medium" : "text-muted-foreground",
-            )}
+            className="flex flex-1 flex-col items-center gap-1 pt-2 pb-2"
           >
-            <Icon className="size-5" aria-hidden />
-            {item.label}
+            <span
+              className={cn(
+                "flex h-8 w-12 items-center justify-center rounded-full transition-colors",
+                active
+                  ? "bg-foreground text-background"
+                  : "text-muted-foreground",
+              )}
+            >
+              <Icon className="size-[18px]" aria-hidden />
+            </span>
+            <span
+              className={cn(
+                "text-[10px] leading-none",
+                active ? "text-foreground font-medium" : "text-muted-foreground",
+              )}
+            >
+              {item.label}
+            </span>
           </Link>
         );
       })}

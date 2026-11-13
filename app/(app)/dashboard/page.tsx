@@ -4,8 +4,8 @@ import { ArrowLeftRight, Wallet } from "lucide-react";
 
 import { CategoryDonut } from "@/components/dashboard/category-donut";
 import { DailyChart } from "@/components/dashboard/daily-chart";
+import { BalanceOverview } from "@/components/dashboard/balance-overview";
 import { RecentTransactions } from "@/components/dashboard/recent-transactions";
-import { StatCards } from "@/components/dashboard/stat-cards";
 import { PageHeader } from "@/components/layout/page-header";
 import { EmptyState } from "@/components/shared/empty-state";
 import { PeriodFilter } from "@/components/shared/period-filter";
@@ -60,7 +60,11 @@ export default async function DashboardPage({
         />
       </PageHeader>
 
-      <StatCards balance={data.balance} summary={data.summary} />
+      <BalanceOverview
+        balance={data.balance}
+        summary={data.summary}
+        periodLabel={formatBulan(period.year, period.month)}
+      />
 
       {hasTransactions ? (
         <>

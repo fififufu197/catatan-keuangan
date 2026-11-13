@@ -6,16 +6,16 @@ import { formatPersen, formatRupiah } from "@/lib/format";
 import type { CategoryTotal } from "@/lib/types";
 
 const COLORS = [
-  "#2563eb",
-  "#16a34a",
-  "#f59e0b",
-  "#dc2626",
-  "#8b5cf6",
-  "#0891b2",
-  "#db2777",
-  "#65a30d",
-  "#ea580c",
-  "#64748b",
+  "#f1370f",
+  "#2b23c3",
+  "#0e7a4e",
+  "#c2b6a9",
+  "#4c4960",
+  "#ff8a5c",
+  "#6f66ff",
+  "#3ecf8e",
+  "#a99a88",
+  "#8d88a3",
 ];
 
 export function CategoryDonut({ data }: { data: CategoryTotal[] }) {
@@ -48,7 +48,7 @@ export function CategoryDonut({ data }: { data: CategoryTotal[] }) {
                 background: "var(--popover)",
                 color: "var(--popover-foreground)",
                 border: "1px solid var(--border)",
-                borderRadius: 8,
+                borderRadius: 12,
                 fontSize: 12,
               }}
               formatter={(value) => formatRupiah(Number(value))}
