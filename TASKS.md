@@ -172,39 +172,39 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ### 4.1 Anggaran
 
-- [ ] `lib/validation/budget.ts` — kategori pengeluaran, tahun 2000–2100, bulan 1–12, nominal > 0.
-- [ ] `lib/db/budgets.ts` — daftar anggaran + aktual per kategori untuk periode; hitung sisa & persentase.
-- [ ] `lib/actions/budgets.ts` — `upsertBudget` (unique per user+kategori+periode), `deleteBudget`.
-- [ ] `app/(app)/anggaran/page.tsx` — filter bulan/tahun, ringkasan total anggaran/aktual/sisa.
-- [ ] `components/budgets/budget-list.tsx` + `budget-form-dialog.tsx` + `budget-progress.tsx`.
-- [ ] Indikator warna: hijau `< 80%`, kuning `80–<100%`, merah `≥ 100%`.
-- [ ] Kategori diarsipkan tetap tampil bila punya anggaran/pengeluaran bulan itu, berlabel "Diarsipkan".
+- [x] `lib/validation/budget.ts` — kategori pengeluaran, tahun 2000–2100, bulan 1–12, nominal > 0.
+- [x] `lib/db/budgets.ts` — daftar anggaran + aktual per kategori untuk periode; hitung sisa & persentase.
+- [x] `lib/actions/budgets.ts` — `upsertBudget` (unique per user+kategori+periode), `deleteBudget`.
+- [x] `app/(app)/anggaran/page.tsx` — filter bulan/tahun, ringkasan total anggaran/aktual/sisa.
+- [x] `components/budgets/budget-list.tsx` + `budget-form-dialog.tsx` + `budget-progress.tsx`.
+- [x] Indikator warna: hijau `< 80%`, kuning `80–<100%`, merah `≥ 100%`.
+- [x] Kategori diarsipkan tetap tampil bila punya anggaran/pengeluaran bulan itu, berlabel "Diarsipkan".
 
 ### 4.2 Laporan
 
-- [ ] `lib/db/reports.ts` — data harian, bulanan, tahunan (`get_period_summary`, `get_daily_series`, `get_monthly_series`, `get_category_totals`, `get_available_years`).
-- [ ] `app/(app)/laporan/page.tsx` — tab Harian / Bulanan / Tahunan; tab & periode di URL.
-- [ ] `components/reports/report-tabs.tsx`, `period-summary.tsx`, `trend-chart.tsx`, `category-breakdown.tsx`.
-- [ ] Isi Harian: pilih tanggal, total, rincian kategori, daftar transaksi hari itu.
-- [ ] Isi Bulanan: pilih bulan/tahun, total, grafik harian, rincian kategori.
-- [ ] Isi Tahunan: pilih tahun, total, grafik 12 bulan, rincian kategori.
-- [ ] Tahun diambil dari `get_available_years()` (default tahun berjalan).
+- [x] `lib/db/reports.ts` — data harian, bulanan, tahunan (`get_period_summary`, `get_daily_series`, `get_monthly_series`, `get_category_totals`, `get_available_years`).
+- [x] `app/(app)/laporan/page.tsx` — tab Harian / Bulanan / Tahunan; tab & periode di URL.
+- [x] `components/reports/report-tabs.tsx`, `period-summary.tsx`, `trend-chart.tsx`, `category-breakdown.tsx`.
+- [x] Isi Harian: pilih tanggal, total, rincian kategori, daftar transaksi hari itu.
+- [x] Isi Bulanan: pilih bulan/tahun, total, grafik harian, rincian kategori.
+- [x] Isi Tahunan: pilih tahun, total, grafik 12 bulan, rincian kategori.
+- [x] Tahun diambil dari `get_available_years()` (default tahun berjalan).
 
 ### 4.3 Ekspor CSV
 
-- [ ] `app/api/export/route.ts` — `GET` dengan parameter periode sesuai tab aktif.
-- [ ] `requireUser()`; query memakai filter yang sama dengan laporan; urut tanggal naik.
-- [ ] Escape koma, kutip, dan newline; UTF-8 BOM; `Content-Disposition: attachment`.
-- [ ] Nama file `transaksi-YYYY-MM-DD.csv`.
-- [ ] `components/reports/export-button.tsx` — mengikuti filter aktif.
-- [ ] Periode kosong tetap menghasilkan file berisi header.
+- [x] `app/api/export/route.ts` — `GET` dengan parameter periode sesuai tab aktif.
+- [x] `requireUser()`; query memakai filter yang sama dengan laporan; urut tanggal naik.
+- [x] Escape koma, kutip, dan newline; UTF-8 BOM; `Content-Disposition: attachment`.
+- [x] Nama file `transaksi-YYYY-MM-DD.csv`.
+- [x] `components/reports/export-button.tsx` — mengikuti filter aktif.
+- [x] Periode kosong tetap menghasilkan file berisi header.
 
 **Gate 4:**
-- [ ] Anggaran hanya bisa dibuat untuk kategori pengeluaran; satu anggaran per kategori per bulan.
-- [ ] Aktual, sisa, dan persentase cocok dengan transaksi bulan tersebut; warna berubah di 80% dan 100%.
-- [ ] Ketiga tab laporan menampilkan total yang benar.
+- [x] Anggaran hanya bisa dibuat untuk kategori pengeluaran; satu anggaran per kategori per bulan.
+- [x] Aktual, sisa, dan persentase cocok dengan transaksi bulan tersebut; warna berubah di 80% dan 100%.
+- [x] Ketiga tab laporan menampilkan total yang benar.
 - [ ] CSV berisi data sesuai periode aktif dan terbuka rapi di Excel (karakter Indonesia benar).
-- [ ] `npm run build` bersih.
+- [x] `npm run build` bersih.
 - [ ] **Persetujuan pengguna.**
 
 ---
@@ -379,6 +379,6 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | --- | --- |
 | 1 — Perencanaan | Selesai (disetujui) |
 | 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
-| 3 — Transaksi & dashboard | 3.1–3.4 selesai — **menunggu Gate 3** |
-| 4 — Anggaran, laporan, CSV | Belum mulai |
+| 3 — Transaksi & dashboard | Selesai (disetujui) |
+| 4 — Anggaran, laporan, CSV | 4.1–4.3 selesai — **menunggu Gate 4** |
 | 5 — Uji & deploy | Belum mulai |

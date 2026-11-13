@@ -6,6 +6,7 @@ import type {
   TransactionWithCategory,
 } from "@/lib/types";
 import { getRecentTransactions } from "@/lib/db/transactions";
+import { fillDailySeries } from "@/lib/db/series";
 import type { DateRange } from "@/lib/period";
 
 export type DashboardData = {
@@ -16,27 +17,6 @@ export type DashboardData = {
   recent: TransactionWithCategory[];
   availableYears: number[];
 };
-
-/** Lengkapi tanggal yang tidak punya transaksi dengan nilai nol. */
-function fillDailySeries(
-  points: DailyPoint[],
-  range: DateRange,
-): DailyPoint[] {
-  const map = new Map(points.map((point) => [point.day, point]));
-  const result: DailyPoint[] = [];
-
-  const cursor = new Date(`${range.from}T00:00:00Z`);
-  const end = new Date(`${range.to}T00:00:00Z`);
-
-  while (cursor <= end) {
-    const day = cursor.toISOString().slice(0, 10);
-    const point = map.get(day);
-    result.push(point ?? { day, income: 0, expense: 0 });
-    cursor.setUTCDate(cursor.getUTCDate() + 1);
-  }
-
-  return result;
-}
 
 /**
  * Semua data dashboard dalam satu gelombang permintaan.

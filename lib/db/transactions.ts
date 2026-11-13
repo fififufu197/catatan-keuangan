@@ -158,3 +158,43 @@ export async function getRecentTransactions(
 
   return ((data ?? []) as unknown as RawTransaction[]).map(normalize);
 }
+
+/**
+ * Semua transaksi pada rentang tanggal, urut tanggal lalu waktu input naik.
+ * Dipakai laporan harian dan ekspor CSV; mengambil per 1.000 baris agar
+ * tidak terpotong batas maksimum PostgREST.
+ */
+export async function listAllTransactionsInRange(
+  from: string,
+  to: string,
+): Promise<TransactionWithCategory[]> {
+  const supabase = await createClient();
+  const chunkSize = 1000;
+  const result: TransactionWithCategory[] = [];
+  let offset = 0;
+
+  for (;;) {
+    const { data, error } = await supabase
+      .from("transactions")
+      .select(SELECT)
+      .gte("occurred_on", from)
+      .lte("occurred_on", to)
+      .order("occurred_on", { ascending: true })
+      .order("created_at", { ascending: true })
+      .range(offset, offset + chunkSize - 1);
+
+    if (error) {
+      console.error("gagal mengambil transaksi laporan:", error.message);
+      return result;
+    }
+
+    const rows = (data ?? []) as unknown as RawTransaction[];
+    result.push(...rows.map(normalize));
+
+    if (rows.length < chunkSize) {
+      return result;
+    }
+
+    offset += chunkSize;
+  }
+}
