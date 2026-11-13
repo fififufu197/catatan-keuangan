@@ -119,42 +119,42 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ### 3.1 Kategori
 
-- [ ] `lib/validation/category.ts` — nama 1–40, trim, jenis enum.
-- [ ] `lib/db/categories.ts` — daftar kategori aktif per jenis, daftar semua (termasuk arsip), cek pemakaian.
-- [ ] `lib/actions/categories.ts` — `createCategory`, `renameCategory`, `setArchived`, `deleteCategory` (hanya bila belum dipakai).
-- [ ] Normalisasi duplikat: tangani error unique index menjadi pesan "Nama kategori sudah dipakai".
-- [ ] `components/categories/category-manager.tsx` + `category-form-dialog.tsx`.
-- [ ] Integrasi pengelolaan kategori di `/pengaturan`.
+- [x] `lib/validation/category.ts` — nama 1–40, trim, jenis enum.
+- [x] `lib/db/categories.ts` — daftar kategori aktif per jenis, daftar semua (termasuk arsip), cek pemakaian.
+- [x] `lib/actions/categories.ts` — `createCategory`, `renameCategory`, `setArchived`, `deleteCategory` (hanya bila belum dipakai).
+- [x] Normalisasi duplikat: tangani error unique index menjadi pesan "Nama kategori sudah dipakai".
+- [x] `components/categories/category-manager.tsx` + `category-form-dialog.tsx`.
+- [x] Integrasi pengelolaan kategori di `/pengaturan`.
 
 ### 3.2 Transaksi — data layer
 
-- [ ] `lib/validation/transaction.ts` — tanggal, jenis, nominal, kategori UUID, deskripsi ≤ 200, metode enum.
-- [ ] `lib/db/transactions.ts` — `listTransactions(filters)` (paginated 25, `count: "exact"`), `getTransaction(id)`, `getRecentTransactions(period, 5)`.
-- [ ] `lib/actions/transactions.ts` — `createTransaction`, `updateTransaction`, `deleteTransaction`; setiap aksi `requireUser()` + Zod + `revalidatePath` dashboard/transaksi/anggaran/laporan.
-- [ ] Pastikan update/delete memakai filter `id` + `user_id` (RLS lapis kedua).
-- [ ] Tolak kategori arsip atau beda jenis dengan pesan jelas.
+- [x] `lib/validation/transaction.ts` — tanggal, jenis, nominal, kategori UUID, deskripsi ≤ 200, metode enum.
+- [x] `lib/db/transactions.ts` — `listTransactions(filters)` (paginated 25, `count: "exact"`), `getTransaction(id)`, `getRecentTransactions(period, 5)`.
+- [x] `lib/actions/transactions.ts` — `createTransaction`, `updateTransaction`, `deleteTransaction`; setiap aksi `requireUser()` + Zod + `revalidatePath` dashboard/transaksi/anggaran/laporan.
+- [x] Pastikan update/delete memakai filter `id` + `user_id` (RLS lapis kedua).
+- [x] Tolak kategori arsip atau beda jenis dengan pesan jelas.
 
 ### 3.3 Transaksi — UI
 
-- [ ] `app/(app)/transaksi/page.tsx` — baca `searchParams`, panggil data layer, render tabel desktop & kartu mobile.
-- [ ] `components/transactions/transaction-filters.tsx` — pencarian (debounce/enter), rentang tanggal, kategori, jenis, urutan; sinkron ke URL.
-- [ ] `components/transactions/transaction-form-dialog.tsx` — tambah/edit, pilihan kategori difilter per jenis, `money-input` dengan format ribuan.
-- [ ] `components/transactions/transaction-delete-dialog.tsx` — konfirmasi hapus.
-- [ ] `components/transactions/transaction-list.tsx` — nominal hijau `+`, merah `−`, tanggal Indonesia.
-- [ ] Pagination 25 baris dengan info "Menampilkan x–y dari z".
-- [ ] Empty state dan skeleton.
-- [ ] Toast sukses/gagal.
+- [x] `app/(app)/transaksi/page.tsx` — baca `searchParams`, panggil data layer, render tabel desktop & kartu mobile.
+- [x] `components/transactions/transaction-filters.tsx` — pencarian (debounce/enter), rentang tanggal, kategori, jenis, urutan; sinkron ke URL.
+- [x] `components/transactions/transaction-form-dialog.tsx` — tambah/edit, pilihan kategori difilter per jenis, `money-input` dengan format ribuan.
+- [x] `components/transactions/transaction-delete-dialog.tsx` — konfirmasi hapus.
+- [x] `components/transactions/transaction-list.tsx` — nominal hijau `+`, merah `−`, tanggal Indonesia.
+- [x] Pagination 25 baris dengan info "Menampilkan x–y dari z".
+- [x] Empty state dan skeleton.
+- [x] Toast sukses/gagal.
 
 ### 3.4 Dashboard
 
-- [ ] `lib/db/dashboard.ts` — panggil `get_balance`, `get_period_summary`, `get_daily_series`, `get_category_totals` untuk periode terpilih + 5 transaksi terakhir.
-- [ ] `app/(app)/dashboard/page.tsx` — filter bulan/tahun dari URL (default bulan berjalan WIB).
-- [ ] `components/dashboard/stat-cards.tsx` — 4 kartu (Total Saldo, Pemasukan, Pengeluaran, Selisih).
-- [ ] `components/dashboard/daily-chart.tsx` — Recharts bar chart harian (client component).
-- [ ] `components/dashboard/category-donut.tsx` — donut + legenda nominal & persentase.
-- [ ] `components/dashboard/recent-transactions.tsx` — maksimal 5 baris.
-- [ ] Empty state bila belum ada transaksi pada periode itu.
-- [ ] Format ringkas sumbu grafik (`Rp250 rb`, `Rp1,5 jt`).
+- [x] `lib/db/dashboard.ts` — panggil `get_balance`, `get_period_summary`, `get_daily_series`, `get_category_totals` untuk periode terpilih + 5 transaksi terakhir.
+- [x] `app/(app)/dashboard/page.tsx` — filter bulan/tahun dari URL (default bulan berjalan WIB).
+- [x] `components/dashboard/stat-cards.tsx` — 4 kartu (Total Saldo, Pemasukan, Pengeluaran, Selisih).
+- [x] `components/dashboard/daily-chart.tsx` — Recharts bar chart harian (client component).
+- [x] `components/dashboard/category-donut.tsx` — donut + legenda nominal & persentase.
+- [x] `components/dashboard/recent-transactions.tsx` — maksimal 5 baris.
+- [x] Empty state bila belum ada transaksi pada periode itu.
+- [x] Format ringkas sumbu grafik (`Rp250 rb`, `Rp1,5 jt`).
 
 **Gate 3:**
 - [ ] CRUD transaksi dan kategori berfungsi; perubahan langsung terlihat di dashboard.
@@ -163,7 +163,7 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [ ] Total dashboard cocok dengan hitungan manual.
 - [ ] Saldo tidak berubah saat filter bulan diganti.
 - [ ] Uji cepat 2 akun: data tidak saling terlihat.
-- [ ] `npm run build` bersih.
+- [x] `npm run build` bersih.
 - [ ] **Persetujuan pengguna.**
 
 ---
@@ -378,7 +378,7 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | Tahap | Status |
 | --- | --- |
 | 1 — Perencanaan | Selesai (disetujui) |
-| 2 — Fondasi | 2.1–2.7 selesai — **menunggu Gate 2** (butuh kredensial Supabase) |
-| 3 — Transaksi & dashboard | Belum mulai |
+| 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
+| 3 — Transaksi & dashboard | 3.1–3.4 selesai — **menunggu Gate 3** |
 | 4 — Anggaran, laporan, CSV | Belum mulai |
 | 5 — Uji & deploy | Belum mulai |

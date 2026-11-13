@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LogOut } from "lucide-react";
 
+import { CategoryManager } from "@/components/categories/category-manager";
 import { PageHeader } from "@/components/layout/page-header";
 import { ProfileForm } from "@/components/profile/profile-form";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { logout } from "@/lib/actions/auth";
 import { requireUser } from "@/lib/auth";
+import { listAllCategories } from "@/lib/db/categories";
 import { getProfile } from "@/lib/db/profile";
 
 export const metadata: Metadata = {
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
 export default async function PengaturanPage() {
   const user = await requireUser();
   const profile = await getProfile(user.id);
+  const categories = await listAllCategories();
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -44,6 +47,8 @@ export default async function PengaturanPage() {
           />
         </CardContent>
       </Card>
+
+      <CategoryManager categories={categories} />
 
       <Card>
         <CardHeader>

@@ -23,6 +23,7 @@ export function ConfirmDialog({
   confirmLabel = "Hapus",
   cancelLabel = "Batal",
   onConfirm,
+  onSuccess,
 }: {
   trigger: React.ReactNode;
   title: string;
@@ -30,6 +31,7 @@ export function ConfirmDialog({
   confirmLabel?: string;
   cancelLabel?: string;
   onConfirm: () => Promise<ActionState>;
+  onSuccess?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,6 +48,7 @@ export function ConfirmDialog({
       }
 
       setOpen(false);
+      onSuccess?.();
     });
   }
 
