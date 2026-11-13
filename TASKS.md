@@ -64,49 +64,49 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ### 2.3 Supabase client & sesi
 
-- [ ] `lib/supabase/server.ts` — `createServerClient` dengan cookie adapter (`getAll`/`setAll`).
-- [ ] `lib/supabase/client.ts` — `createBrowserClient` (hanya bila diperlukan).
-- [ ] `lib/supabase/proxy.ts` — `updateSession()`.
-- [ ] `proxy.ts` di root — memanggil `updateSession()`, matcher mengecualikan aset statis.
-- [ ] `lib/auth.ts` — `requireUser()` (pakai `getUser()`), `getUserOrNull()`.
-- [ ] `lib/env.ts` — validasi env dengan Zod agar build gagal cepat bila env kosong.
+- [x] `lib/supabase/server.ts` — `createServerClient` dengan cookie adapter (`getAll`/`setAll`).
+- [x] `lib/supabase/client.ts` — `createBrowserClient` (hanya bila diperlukan).
+- [x] `lib/supabase/proxy.ts` — `updateSession()`.
+- [x] `proxy.ts` di root — memanggil `updateSession()`, matcher mengecualikan aset statis.
+- [x] `lib/auth.ts` — `requireUser()` (pakai `getUser()`), `getUserOrNull()`.
+- [x] `lib/env.ts` — validasi env dengan Zod agar build gagal cepat bila env kosong.
 
 ### 2.4 Utilitas dasar
 
-- [ ] `lib/format.ts` — `formatRupiah` (`Rp1.000.000`), `formatTanggal` (`13 November 2026`, `timeZone: "UTC"`), `formatBulan`, `formatPersen`, `formatRingkas` (`Rp1,5 jt`).
-- [ ] `lib/period.ts` — bulan/tahun berjalan `Asia/Jakarta`, `rentangBulan`, `rentangTahun`, `rentangHari`, validasi `YYYY-MM-DD`.
-- [ ] `lib/constants.ts` — label jenis, label metode pembayaran, batas nominal/panjang, daftar navigasi.
-- [ ] `lib/types.ts` — tipe baris DB + DTO (`TransactionRow`, `CategoryRow`, `BudgetRow`, `PeriodSummary`, dst.).
-- [ ] Uji cepat fungsi format & periode (manual + contoh di komentar).
+- [x] `lib/format.ts` — `formatRupiah` (`Rp1.000.000`), `formatTanggal` (`13 November 2026`, `timeZone: "UTC"`), `formatBulan`, `formatPersen`, `formatRingkas` (`Rp1,5 jt`).
+- [x] `lib/period.ts` — bulan/tahun berjalan `Asia/Jakarta`, `rentangBulan`, `rentangTahun`, `rentangHari`, validasi `YYYY-MM-DD`.
+- [x] `lib/constants.ts` — label jenis, label metode pembayaran, batas nominal/panjang, daftar navigasi.
+- [x] `lib/types.ts` — tipe baris DB + DTO (`TransactionRow`, `CategoryRow`, `BudgetRow`, `PeriodSummary`, dst.).
+- [x] Uji cepat fungsi format & periode (manual + contoh di komentar).
 
 ### 2.5 Autentikasi
 
-- [ ] `app/(auth)/layout.tsx` — layout bersih tanpa sidebar, redirect ke `/dashboard` bila sudah login.
-- [ ] `app/(auth)/login/page.tsx` + form client (`useActionState`).
-- [ ] `app/(auth)/register/page.tsx` + form client.
-- [ ] `lib/validation/auth.ts` — Zod: email valid, password min. 8, `full_name` 1–80.
-- [ ] `lib/actions/auth.ts` — `login`, `register`, `logout` (Server Action, pesan error Bahasa Indonesia).
-- [ ] `app/page.tsx` — redirect ke `/dashboard` (atau `/login` bila tanpa sesi).
-- [ ] `app/not-found.tsx`.
+- [x] `app/(auth)/layout.tsx` — layout bersih tanpa sidebar, redirect ke `/dashboard` bila sudah login.
+- [x] `app/(auth)/login/page.tsx` + form client (`useActionState`).
+- [x] `app/(auth)/register/page.tsx` + form client.
+- [x] `lib/validation/auth.ts` — Zod: email valid, password min. 8, `full_name` 1–80.
+- [x] `lib/actions/auth.ts` — `login`, `register`, `logout` (Server Action, pesan error Bahasa Indonesia).
+- [x] `app/page.tsx` — redirect ke `/dashboard` (atau `/login` bila tanpa sesi).
+- [x] `app/not-found.tsx`.
 
 ### 2.6 Layout aplikasi
 
-- [ ] `app/layout.tsx` — font, `ThemeProvider`, `Toaster`, `lang="id"`, metadata.
-- [ ] `app/globals.css` — token warna Tailwind v4 (hijau income, merah expense, netral).
-- [ ] `app/(app)/layout.tsx` — `requireUser()`, sidebar desktop, sheet + bottom nav mobile.
-- [ ] `components/layout/sidebar.tsx`, `mobile-nav.tsx`, `theme-toggle.tsx`, `page-header.tsx`, `user-menu.tsx`.
-- [ ] `components/shared/empty-state.tsx`, `confirm-dialog.tsx`, `money-input.tsx`, `period-filter.tsx`, `form-error.tsx`.
-- [ ] Halaman placeholder `/dashboard`, `/transaksi`, `/anggaran`, `/laporan`, `/pengaturan` yang bisa dibuka tanpa error.
-- [ ] Dark mode berfungsi dan tersimpan; default terang.
+- [x] `app/layout.tsx` — font, `ThemeProvider`, `Toaster`, `lang="id"`, metadata.
+- [x] `app/globals.css` — token warna Tailwind v4 (hijau income, merah expense, netral).
+- [x] `app/(app)/layout.tsx` — `requireUser()`, sidebar desktop, sheet + bottom nav mobile.
+- [x] `components/layout/sidebar.tsx`, `mobile-nav.tsx`, `theme-toggle.tsx`, `page-header.tsx`, `user-menu.tsx`.
+- [x] `components/shared/empty-state.tsx`, `confirm-dialog.tsx`, `money-input.tsx`, `period-filter.tsx`, `form-error.tsx`.
+- [x] Halaman placeholder `/dashboard`, `/transaksi`, `/anggaran`, `/laporan`, `/pengaturan` yang bisa dibuka tanpa error.
+- [x] Dark mode berfungsi dan tersimpan; default terang.
 
 ### 2.7 Pengaturan profil & logout
 
-- [ ] `lib/validation/profile.ts`, `lib/actions/profile.ts` — update `full_name`.
-- [ ] `lib/db/profile.ts` — ambil profil.
-- [ ] `/pengaturan` bagian Profil (email read-only) + tombol Logout.
+- [x] `lib/validation/profile.ts`, `lib/actions/profile.ts` — update `full_name`.
+- [x] `lib/db/profile.ts` — ambil profil.
+- [x] `/pengaturan` bagian Profil (email read-only) + tombol Logout.
 
 **Gate 2:**
-- [ ] `npm run build`, `tsc --noEmit`, dan lint bersih.
+- [x] `npm run build`, `tsc --noEmit`, dan lint bersih.
 - [ ] Register akun pertama → profil + 15 kategori default otomatis dibuat di database.
 - [ ] Logout lalu membuka `/dashboard` mengarah ke `/login`; tombol Back tidak membuka data.
 - [ ] Refresh halaman tetap login (cookie sesi diperbarui `proxy.ts`).
@@ -378,7 +378,7 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | Tahap | Status |
 | --- | --- |
 | 1 — Perencanaan | Selesai (disetujui) |
-| 2 — Fondasi | Berjalan — 2.1 SQL ditulis, 2.2 scaffold selesai |
+| 2 — Fondasi | 2.1–2.7 selesai — **menunggu Gate 2** (butuh kredensial Supabase) |
 | 3 — Transaksi & dashboard | Belum mulai |
 | 4 — Anggaran, laporan, CSV | Belum mulai |
 | 5 — Uji & deploy | Belum mulai |
