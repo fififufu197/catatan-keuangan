@@ -1,23 +1,24 @@
 import { z } from "zod";
 
 /**
- * Dua variabel ini satu-satunya konfigurasi rahasia aplikasi.
- * Service role key sengaja tidak dipakai (lihat ARCHITECTURE.md §7).
+ * Dua variabel ini hanya dibaca di sisi server (Server Component, Server
+ * Action, dan proxy). Tanpa prefix NEXT_PUBLIC_, nilainya tidak ikut ke
+ * bundle browser; akses data tetap dijaga RLS.
  */
 const envSchema = z.object({
-  NEXT_PUBLIC_SUPABASE_URL: z
+  SUPABASE_URL: z
     .string()
     .trim()
-    .url("NEXT_PUBLIC_SUPABASE_URL harus berupa URL yang valid"),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z
+    .url("SUPABASE_URL harus berupa URL yang valid"),
+  SUPABASE_ANON_KEY: z
     .string()
     .trim()
-    .min(20, "NEXT_PUBLIC_SUPABASE_ANON_KEY tidak boleh kosong"),
+    .min(20, "SUPABASE_ANON_KEY tidak boleh kosong"),
 });
 
 const parsed = envSchema.safeParse({
-  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
 });
 
 if (!parsed.success) {

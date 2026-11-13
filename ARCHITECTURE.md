@@ -167,7 +167,7 @@ Rute memakai Bahasa Indonesia agar URL konsisten dengan UI. Filter disimpan seba
 | --- | --- |
 | Isolasi data | RLS `user_id = auth.uid()` pada semua tabel; policy `with check` juga memverifikasi kepemilikan kategori |
 | Autentikasi | `getUser()` di layout dan setiap Server Action; redirect bila tidak ada sesi |
-| Kunci | Hanya `NEXT_PUBLIC_SUPABASE_URL` dan `NEXT_PUBLIC_SUPABASE_ANON_KEY`; service role key tidak dipakai sama sekali |
+| Kunci | Hanya `SUPABASE_URL` dan `SUPABASE_ANON_KEY` (server-only, tanpa prefix `NEXT_PUBLIC_`); service role key tidak dipakai sama sekali |
 | Validasi | Zod di server: tipe, panjang, rentang tanggal, nominal integer, enum jenis/metode, UUID kategori |
 | Otorisasi objek | Setiap update/delete memakai `id` + filter `user_id`; RLS menolak baris milik pengguna lain |
 | Integritas | Foreign key komposit `(category_id, kind)` mencegah kategori pemasukan dipakai untuk pengeluaran |
@@ -176,7 +176,7 @@ Rute memakai Bahasa Indonesia agar URL konsisten dengan UI. Filter disimpan seba
 | Secret | `.env.local` masuk `.gitignore`; `.env.example` hanya berisi nama variabel |
 | CSV | Escape tanda kutip/koma/newline; `Content-Disposition: attachment` |
 
-Catatan: anon key memang dirancang publik. Yang melindungi data adalah RLS, bukan kerahasiaan anon key.
+Catatan: anon key memang dirancang untuk klien dan dilindungi RLS. Aplikasi ini hanya memakainya di server, sehingga nilainya tidak ikut ke bundle browser.
 
 ## 8. Performa
 
@@ -193,8 +193,8 @@ Catatan: anon key memang dirancang publik. Yang melindungi data adalah RLS, buka
 
 - Framework preset: Next.js; build `next build`; Node.js 22.x.
 - Environment Variables (Production, Preview, Development):
-  - `NEXT_PUBLIC_SUPABASE_URL`
-  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - `SUPABASE_URL`
+  - `SUPABASE_ANON_KEY`
 - `vercel.json`: `{ "regions": ["sin1"] }` (Hobby: satu region).
 - Tidak ada `crons`, tidak ada queue, tidak ada function dengan durasi panjang.
 - Domain: `*.vercel.app` cukup; domain kustom opsional dan gratis.

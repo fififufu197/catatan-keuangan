@@ -19,10 +19,10 @@ npm run dev                  # http://localhost:3000
 
 | Variabel | Contoh |
 | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://abcdefgh.supabase.co` (tanpa `/rest/v1`) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | publishable key `sb_publishable_...` atau anon key lama |
+| `SUPABASE_URL` | `https://abcdefgh.supabase.co` (tanpa `/rest/v1`) |
+| `SUPABASE_ANON_KEY` | publishable key `sb_publishable_...` atau anon key lama |
 
-Hanya dua nilai publik itu yang dipakai. Jangan memakai service role/secret key.
+Keduanya hanya dibaca di sisi server (tanpa prefix `NEXT_PUBLIC_`), jadi tidak ikut ke bundle browser. Jangan memakai service role/secret key.
 
 Skema database ada di `supabase/migrations/` — lihat `supabase/README.md` untuk urutan menjalankannya di Supabase SQL Editor. Panduan deploy lengkap ada di [`DEPLOYMENT.md`](DEPLOYMENT.md).
 

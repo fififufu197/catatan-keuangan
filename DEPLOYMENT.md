@@ -26,12 +26,12 @@ Buka **Project Settings → API**:
 
 | Nilai | Dipakai sebagai |
 | --- | --- |
-| Project URL, contoh `https://abcdefgh.supabase.co` | `NEXT_PUBLIC_SUPABASE_URL` |
-| Publishable key (`sb_publishable_...`) atau anon key lama (`eyJ...`) | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
+| Project URL, contoh `https://abcdefgh.supabase.co` | `SUPABASE_URL` |
+| Publishable key (`sb_publishable_...`) atau anon key lama (`eyJ...`) | `SUPABASE_ANON_KEY` |
 
 > Jangan memakai **service role** / **secret key**. Aplikasi hanya memakai dua
-> nilai publik di atas; RLS adalah penjaga data. Service role key tidak boleh
-> masuk ke `.env.local`, repositori, atau environment Vercel.
+> nilai di atas dan membacanya di server; RLS adalah penjaga data. Service role
+> key tidak boleh masuk ke `.env.local`, repositori, atau environment Vercel.
 
 URL harus tanpa akhiran `/rest/v1/`.
 
@@ -90,10 +90,14 @@ baru. Aplikasi tidak menyediakan halaman hapus akun; akun dihapus lewat
 
 ## 3. Environment variables
 
-| Variabel | Contoh | Rahasia? |
+| Variabel | Contoh | Tipe Vercel |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://abcdefgh.supabase.co` | Tidak |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `sb_publishable_...` | Tidak (publik, dilindungi RLS) |
+| `SUPABASE_URL` | `https://abcdefgh.supabase.co` | Config |
+| `SUPABASE_ANON_KEY` | `sb_publishable_...` | Config (atau Secret) |
+
+Tidak memakai prefix `NEXT_PUBLIC_` karena kedua nilai hanya dibaca di server.
+Dengan begitu Vercel tidak memunculkan peringatan nilai publik, dan key tidak
+ikut ke bundle browser.
 
 Lokal:
 
@@ -104,8 +108,10 @@ npm run dev
 ```
 
 Vercel: **Project Settings → Environment Variables**, tambahkan keduanya untuk
-**Production**, **Preview**, dan **Development**. Setelah mengubah environment
-variable, lakukan **Redeploy**.
+**Production**, **Preview**, dan **Development**. Pilih tipe **Config**; bila
+pilihan Config tidak tersedia, **Secret** juga berfungsi karena nama variabel
+tidak berawalan `NEXT_PUBLIC_`. Hapus variabel lama bernama
+`NEXT_PUBLIC_SUPABASE_*` bila ada, lalu **Redeploy** tanpa build cache.
 
 ## 4. GitHub
 
@@ -244,7 +250,7 @@ transaksi. Pemakaian terbesar biasanya egress saat membuka halaman dan grafik.
 
 | Gejala | Penyebab umum | Solusi |
 | --- | --- | --- |
-| Redirect berulang ke `/login` | `NEXT_PUBLIC_SUPABASE_URL` salah atau ada `/rest/v1/` | Perbaiki URL, restart dev server / redeploy |
+| Redirect berulang ke `/login` | `SUPABASE_URL` salah atau ada `/rest/v1/` | Perbaiki URL, restart dev server / redeploy |
 | `Invalid API key` | Key salah atau sudah dirotasi | Salin ulang publishable/anon key |
 | Data tidak muncul setelah login | Migrasi belum lengkap atau RLS salah | Jalankan ulang `0002_rls.sql`, cek policy |
 | CSV tampil berantakan di Excel | File dibuka lewat cara lain / BOM hilang | Unduh ulang dari `/laporan`, buka langsung di Excel |

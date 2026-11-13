@@ -353,7 +353,7 @@ Alasan urutan: tabel harus ada sebelum auth diuji; kategori harus ada sebelum tr
 | Framework preset | Next.js |
 | Node.js | 22.x |
 | Region | `sin1` lewat `vercel.json` |
-| Env vars | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
+| Env vars | `SUPABASE_URL`, `SUPABASE_ANON_KEY` (server-only) |
 | Cron / worker | Tidak ada |
 | Plan | Hobby (non-komersial) |
 
