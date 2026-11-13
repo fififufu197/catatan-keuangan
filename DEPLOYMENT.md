@@ -138,6 +138,9 @@ Pastikan `.env.local` tidak ikut ter-commit (sudah ada di `.gitignore`).
    dan **Redirect URLs** dengan domain tersebut.
 8. Jika domain berubah, perbarui Site URL/Redirect URLs lalu redeploy bila perlu.
 
+Deployment aktif saat ini: `https://catatan-keuangan-snowy.vercel.app`
+(repo `fififufu197/catatan-keuangan`, region `sin1`).
+
 Tidak ada cron, worker, atau database tambahan. Build memakai perintah standar
 `npm run build`.
 

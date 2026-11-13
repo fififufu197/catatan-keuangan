@@ -211,6 +211,8 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ## Tahap 5 — Pengujian, keamanan, deployment
 
+Produksi: https://catatan-keuangan-snowy.vercel.app
+
 ### 5.1 Pengujian fungsi & tampilan
 
 - [ ] Uji manual seluruh alur: register → login → tambah transaksi → dashboard → anggaran → laporan → CSV → logout.
@@ -235,7 +237,7 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 
 ### 5.3 Dokumentasi & konfigurasi deploy
 
-- [x] `.env.example` final (hanya dua variabel publik).
+- [x] `.env.example` final (hanya `SUPABASE_URL` dan `SUPABASE_ANON_KEY`, server-only).
 - [x] `README.md` — ringkasan, stack, cara menjalankan lokal, struktur folder.
 - [x] `DEPLOYMENT.md` — langkah Supabase (migrasi, auth, RLS), langkah Vercel (import repo, env, region, deploy), pengaturan redirect URL.
 - [x] Bagian **Backup & pemulihan** — ekspor CSV rutin + panduan `pg_dump` dari Supabase.
@@ -243,8 +245,9 @@ Dikerjakan pengguna, bukan agen (agen tidak bisa membuat akun).
 - [x] Bagian **Reset password** — lewat dashboard Supabase.
 - [x] Bagian **Batasan Free Tier** — 500 MB, 5 GB egress, tanpa backup otomatis, non-komersial.
 - [x] Commit terakhir dan push ke GitHub.
-- [ ] Deploy ke Vercel, isi environment variables, set region `sin1`.
+- [x] Deploy ke Vercel, isi environment variables, set region `sin1`.
 - [ ] Uji produksi: login, satu transaksi, satu anggaran, satu ekspor CSV.
+      Login, semua halaman, dan CSV sudah lolos otomatis; tambah transaksi/anggaran menunggu uji manual.
 - [ ] Setelah verifikasi, matikan signup Supabase dan hapus akun uji.
 
 **Gate 5:** aplikasi berjalan di domain Vercel, seluruh kriteria penerimaan PRD §10 terpenuhi, dokumentasi lengkap.
@@ -381,4 +384,4 @@ Multi-currency, dompet terpisah, transaksi berulang, notifikasi, impor mutasi, l
 | 2 — Fondasi | 2.1–2.7 selesai, verifikasi otomatis lolos — **menunggu cek browser Gate 2** |
 | 3 — Transaksi & dashboard | Selesai (disetujui) |
 | 4 — Anggaran, laporan, CSV | Selesai (disetujui) |
-| 5 — Uji & deploy | 5.1–5.2 lolos, repo sudah di GitHub — **menunggu deploy Vercel** |
+| 5 — Uji & deploy | 5.1–5.3 lolos otomatis, deploy Vercel aktif — **Gate 5 menunggu uji manual & persetujuan** |
